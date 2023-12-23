@@ -1,0 +1,25 @@
+Commande lancer server : 
+
+sudo cp libserver.so /usr/lib
+sudo cp libclient.so /usr/lib
+export LD_LIBRARY_PATH=.
+gcc -o mon_programme_server server.c -ldl -lpthread -L. -lserver -lclient
+./mon_programme_server 8080
+
+Explication de l'argument :
+8080 : port du server
+
+
+
+Commande lancer client : 
+
+sudo cp libserver.so /usr/lib
+sudo cp libclient.so /usr/lib
+export LD_LIBRARY_PATH=.
+gcc -o mon_programme_client client.c -ldl -lpthread -L. -lclient -lserver -lssl -lcrypto
+./mon_programme_client 8080 8060
+
+Explication des arguments : 
+8080 : port du server
+8060 : port du client (peut être necessaire selon les utilisation du client)
+
